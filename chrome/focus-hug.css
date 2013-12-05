@@ -10,9 +10,10 @@
 	opacity: 1;
 }
 #focus-hug.focus-hug_visible {
-	transition-property: -webkit-transform, transform, opacity;
+	transition-property: -webkit-transform;
+	transition-property: transform;
 	transition-timing-function: ease-in;
-	transition-duration: 0.1s;
+	transition-duration: .1s;
 	visibility: visible;
 	z-index: 9999;
 }
