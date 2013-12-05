@@ -1,12 +1,12 @@
 {
 	"manifest_version": 2,
-	"name": "Flying Focus",
-	"version": "1.2",
+	"name": "Focus Hug",
+	"version": "1.0",
 	"description": "Adds a transition to the focus outline when you tab around inputs, buttons, and links.",
 	"content_scripts": [
 		{
-			"js": ["flying-focus.js"],
-			"css": ["flying-focus.css"],
+			"js": ["focus-hug.js"],
+			"css": ["focus-hug.css"],
 			"matches": [
 				"<all_urls>"
 			]

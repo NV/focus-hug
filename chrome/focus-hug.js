@@ -1,9 +1,8 @@
-var flyingFocus = document.createElement('flying-focus'); // use uniq element name to decrease the chances of a conflict with website styles
-flyingFocus.id = 'flying-focus';
-document.body.appendChild(flyingFocus);
-
 var DURATION = 100;
-flyingFocus.style.transitionDuration = flyingFocus.style.WebkitTransitionDuration = DURATION / 1000 + 's';
+
+var focusHug = document.createElement('focus-hug'); // use uniq element name to decrease the chances of a conflict with website styles
+focusHug.id = 'focus-hug';
+document.body.appendChild(focusHug);
 
 function offsetOf(elem) {
 	var rect = elem.getBoundingClientRect();
@@ -23,48 +22,47 @@ function offsetOf(elem) {
 
 var movingId = 0;
 var prevFocused = null;
-var isFirstFocus = true;
 var keyDownTime = 0;
 
 document.documentElement.addEventListener('keydown', function(event) {
 	var code = event.which;
 	// Show animation only upon Tab or Arrow keys press.
 	if (code === 9 || (code > 36 && code < 41)) {
-		keyDownTime = now();
+		keyDownTime = Date.now();
 	}
 }, false);
 
 document.documentElement.addEventListener('focus', function(event) {
 	var target = event.target;
-	if (target.id === 'flying-focus') {
+	if (target.id === 'focus-hug') {
 		return;
 	}
 	var offset = offsetOf(target);
-	flyingFocus.style.left = offset.left + 'px';
-	flyingFocus.style.top = offset.top + 'px';
-	flyingFocus.style.width = target.offsetWidth + 'px';
-	flyingFocus.style.height = target.offsetHeight + 'px';
+
+	focusHug.style.left = offset.left + 1 + 'px';
+	focusHug.style.top = offset.top + 1 + 'px';
+	focusHug.style.width = target.offsetWidth - 2 + 'px';
+	focusHug.style.height = target.offsetHeight - 2 + 'px';
 
 	// Would be nice to use:
 	//
-	//   flyingFocus.style['outline-offset'] = getComputedStyle(target, null)['outline-offset']
+	//   focusHug.style['outline-offset'] = getComputedStyle(target, null)['outline-offset']
 	//
-	// but it always '0px' in WebKit and Blink for some reason :(
+	// but it is always '0px' in WebKit and Blink for some reason :(
 
-	if (isFirstFocus) {
-		isFirstFocus = false;
-		return;
-	}
-
-	if (now() - keyDownTime > 42) {
+	if (Date.now() - keyDownTime > 42) {
 		return;
 	}
 
 	onEnd();
-	target.classList.add('flying-focus_target');
-	flyingFocus.classList.add('flying-focus_visible');
+	target.classList.add('focus-hug_target');
+	focusHug.classList.add('focus-hug_visible');
 	prevFocused = target;
-	movingId = setTimeout(onEnd, DURATION);
+
+	requestAnimationFrame(function() {
+		focusHug.classList.add('focus-hug_hiding');
+		movingId = setTimeout(onEnd, DURATION);
+	});
 }, true);
 
 document.documentElement.addEventListener('blur', function() {
@@ -78,11 +76,8 @@ function onEnd() {
 	}
 	clearTimeout(movingId);
 	movingId = 0;
-	flyingFocus.classList.remove('flying-focus_visible');
-	prevFocused.classList.remove('flying-focus_target');
+	focusHug.classList.remove('focus-hug_visible');
+	focusHug.classList.remove('focus-hug_hiding');
+	prevFocused.classList.remove('focus-hug_target');
 	prevFocused = null;
-}
-
-function now() {
-	return new Date().valueOf();
 }

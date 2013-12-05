@@ -1,31 +1,37 @@
-#flying-focus {
+#focus-hug {
 	position: absolute;
 	margin: 0;
 	background: transparent;
-	-webkit-transition-property: left, top, width, height, opacity;
-	transition-property: left, top, width, height, opacity;
-	-webkit-transition-timing-function: cubic-bezier(0, 0.2, 0, 1);
-	transition-timing-function: cubic-bezier(0, 0.2, 0, 1);
 	visibility: hidden;
 	pointer-events: none;
 	box-shadow: 0 0 2px 3px #78aeda, 0 0 2px #78aeda inset; border-radius: 2px;
+	-webkit-transform: scale(1.4);
+	transform: scale(1.4);
+	opacity: 1;
 }
-#flying-focus.flying-focus_visible {
+#focus-hug.focus-hug_visible {
+	transition-property: -webkit-transform, transform, opacity;
+	transition-timing-function: ease-in;
+	transition-duration: 0.1s;
 	visibility: visible;
 	z-index: 9999;
 }
-.flying-focus_target {
-	outline: none !important; /* Doesn't work in Firefox :( */
+#focus-hug.focus-hug_hiding {
+	-webkit-transform: scale(1) !important;
+	transform: scale(1) !important;
+}
+.focus-hug_target {
+	outline: none !important;
 }
 /* http://stackoverflow.com/questions/71074/how-to-remove-firefoxs-dotted-outline-on-buttons-as-well-as-links/199319 */
-.flying-focus_target::-moz-focus-inner {
+.focus-hug_target::-moz-focus-inner {
 	border: 0 !important;
 }
 /* Replace it with @supports rule when browsers catch up */
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
-	#flying-focus {
+	#focus-hug {
 		box-shadow: none;
 		outline: 5px auto -webkit-focus-ring-color;
-		outline-offset: -3px;
+		outline-offset: 0;
 	}
 }
