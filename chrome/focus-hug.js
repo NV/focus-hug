@@ -1,6 +1,6 @@
 'use strict';
 
-var DURATION = 1000;
+var DURATION = 100;
 var OFFSET_PX = -1;
 var MIN_WIDTH = 12;
 var MIN_HEIGHT = 8;

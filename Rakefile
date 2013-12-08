@@ -1,28 +1,11 @@
-task :default => [:safari, :standalone]
+task :default => [:standalone]
 
 desc 'Build standalone file'
-task :standalone => ['chrome/flying-focus.js', 'chrome/flying-focus.css'] do
+task :standalone => ['chrome/focus-hug.js', 'chrome/focus-hug.css'] do
   require 'jspp'
-  File.open('standalone/flying-focus.js', 'w') { |file|
-    text = JSPP('standalone/flying-focus.jspp.js')
+  File.open('standalone/focus-hug.js', 'w') { |file|
+    text = JSPP('standalone/focus-hug.jspp.js')
     file.write(text)
   }
-  puts 'standalone/flying-focus.js'
+  puts 'standalone/focus-hug.js'
 end
-
-
-desc 'Build Safari extension to ./FlyingFocus.safariextension/'
-task :safari => ['chrome/flying-focus.js', 'chrome/flying-focus.css'] do
-  cp_r ['chrome/flying-focus.js', 'chrome/flying-focus.css'], 'FlyingFocus.safariextension'
-  puts 'FlyingFocus.safariextension'
-end
-
-#FIXME
-#task :firefox do
-#
-#end
-
-#FIXME
-#task :ie do
-#
-#end
