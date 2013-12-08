@@ -1,18 +1,19 @@
-![Focus transition effects](http://n12v.com/keyboard-focus-transition/animation.gif)
+[Flying Focus](//github.com/NV/flying-focus/)
+ · [Focus Snail](//github.com/NV/focus-snail/)
+ · [Focus Zoom](//github.com/NV/focus-hug/)
+ · **Focus Hug**
 
-## [focus-hug.js](http://n12v.com/keyboard-focus-transition/focus-hug.js)
-
-Totally standalone, includes all necessary CSS and has no external dependencies.
+## [focus-hug.js](http://nv.github.io/focus-hug/standalone/focus-hug.js)
 
 To use, just include `<script src="focus-hug.js"></script>` inside either `<head>` or `<body>`.
+It includes all necessary CSS and has no external dependencies.
 
 To build from source use `rake standalone`.
 
-
-## API
+### API
 
 Focus Hug exposes `focusHug` global variable.
 
-`focusHug.trigger(element)` manually trigger Focus Hug on the specified element.
+`focusHug.trigger(element)` manually run for the specified element.
 
-`focusHug.enabled = true` don't do anything on focus event. Does not affect focusHug.trigger method.
+`focusHug.enabled = true` trigger the effect on focus event.
