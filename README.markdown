@@ -1,17 +1,18 @@
-# [Focus Transition](http://n12v.com/focus-transition/)
+![Focus transition effects](http://n12v.com/keyboard-focus-transition/animation.gif)
 
-![Flying Focus icon](http://nv.github.io/flying-focus/chrome/icon_128.png)
+## [focus-hug.js](http://n12v.com/keyboard-focus-transition/focus-hug.js)
 
-Flying Focus is a UI concept. It adds a transition to the focus outline when you tab around inputs, buttons, and links.
+Totally standalone, includes all necessary CSS and has no external dependencies.
 
-## [flying-focus.js](http://n12v.com/focus-transition/flying-focus.js) standalone script
+To use, just include `<script src="focus-hug.js"></script>` inside either `<head>` or `<body>`.
 
-Includes all necessary CSS and has no external dependencies. Build with `rake standalone`.
+To build from source use `rake standalone`.
 
-## [Safari extension](http://n12v.com/focus-transition/FlyingFocus.safariextz)
 
-Build with `rake safari`.
+## API
 
-## [Chrome extension](https://chrome.google.com/webstore/detail/flying-focus/koojelgeljpacclbmiflpcohjkbklplk)
+Focus Hug exposes `focusHug` global variable.
 
-No build step required; just load it as an unpacked extension from `chrome/`.
+`focusHug.trigger(element)` manually trigger Focus Hug on the specified element.
+
+`focusHug.enabled = true` don't do anything on focus event. Does not affect focusHug.trigger method.
