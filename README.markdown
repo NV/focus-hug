@@ -14,6 +14,6 @@ To build from source use `rake standalone`.
 
 Focus Hug exposes `focusHug` global variable.
 
-`focusHug.trigger(element)` manually run for the specified element.
+`focusHug.trigger(element)` manually runs for the specified element.
 
 `focusHug.enabled = true` trigger the effect on focus event.
