@@ -1,6 +1,6 @@
 [Flying Focus](//github.com/NV/flying-focus/)
  · [Focus Snail](//github.com/NV/focus-snail/)
- · [Focus Zoom](//github.com/NV/focus-hug/)
+ · [Focus Zoom](//github.com/NV/focus-zoom/)
  · **Focus Hug**
 
 ## [focus-hug.js](http://nv.github.io/focus-hug/standalone/focus-hug.js)
